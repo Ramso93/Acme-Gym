@@ -39,7 +39,7 @@
 				</ul>
 			</li>
 		</security:authorize>
-		
+		<%--gfgf --%>
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
