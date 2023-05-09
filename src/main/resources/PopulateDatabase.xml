@@ -58,5 +58,28 @@
 	</bean>
 	
 	<!-- Other domain beans come here -->	
-	
+	<!-- Prueba: añadiendo perfil MANAGER -->
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="manager" />
+		<property name="password" value="1d0258c2440a8d19e716292b231e3190" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!-- Prueba: añadiendo perfil TRAINER -->
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="trainer" />
+		<property name="password" value="2c065aae9fcb37b49043a5a2012b3dbf" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TRAINER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 </beans>
