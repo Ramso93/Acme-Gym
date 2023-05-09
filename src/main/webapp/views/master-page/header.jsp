@@ -1,6 +1,6 @@
 <%--
- * header.jsp
- *
+ * header.jsp 
+ * jaja3
  * Copyright (C) 2018 Universidad de Sevilla
  * 
  * The use of this project is hereby constrained to the conditions of the 
