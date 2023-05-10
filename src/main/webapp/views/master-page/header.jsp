@@ -60,7 +60,7 @@
 					<li class="arrow"></li>
 					<%-- <li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li> --%>
 					<%-- <li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li> --%>
-					<li><a href=""><spring:message code="master.page.administrator.ban" /></a></li>
+					<li><a href="actor/administrator/listActor.do"><spring:message code="master.page.administrator.ban" /></a></li>
 					<li><a href=""><spring:message code="master.page.administrator.info" /></a></li>				
 				</ul>
 			</li>
@@ -89,7 +89,7 @@
 			</li>
 		</security:authorize>
 		<security:authorize access="hasRole('TRAINER')">
-		
+		<%-- en bloques C y B no hay funciones excepto edit cv que ya está puesto --%>
 		</security:authorize>
 		<%-- FUNCIONES COMUNES PARA TODO ACTOR LOGGEADO --%>
 		<security:authorize access="isAuthenticated()">

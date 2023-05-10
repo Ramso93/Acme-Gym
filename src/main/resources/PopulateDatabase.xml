@@ -30,7 +30,7 @@
 		</property>
 	</bean>
 
-	<bean id="userAccount2" class="security.UserAccount">
+	<!-- <bean id="userAccount2" class="security.UserAccount">
 		<property name="username" value="customer" />
 		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
 		<property name="authorities">
@@ -56,9 +56,7 @@
 			</list>
 		</property>
 	</bean>
-	
-	<!-- Other domain beans come here -->	
-	<!-- Prueba: añadiendo perfil MANAGER -->
+	 -->
 	<bean id="userAccount4" class="security.UserAccount">
 		<property name="username" value="manager" />
 		<property name="password" value="1d0258c2440a8d19e716292b231e3190" />
@@ -71,6 +69,7 @@
 		</property>
 	</bean>
 	<!-- Prueba: añadiendo perfil TRAINER -->
+	<!-- 
 	<bean id="userAccount5" class="security.UserAccount">
 		<property name="username" value="trainer" />
 		<property name="password" value="2c065aae9fcb37b49043a5a2012b3dbf" />
@@ -82,4 +81,48 @@
 			</list>
 		</property>
 	</bean>
+	 -->
+	<!-- Other domain beans come here -->
+	<!-- ADMINS -->
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="administrator1" />
+		<property name="surname" value="surname" />
+		<property name="email" value="administrator1@mail.com" />
+		<property name="phoneNumber" value="Phone-1" />
+		<property name="postalAddres" value="21006" />
+		<property name="city" value="Huelva" />
+		<property name="country" value="España" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+	<!-- MANAGERS  -->
+	<bean id="manager1" class="domain.Manager">
+		<property name="name" value="manager1" />
+		<property name="surname" value="surname" />
+		<property name="email" value="manager1@mail.com" />
+		<property name="phoneNumber" value="Phone-1" />
+		<property name="postalAddres" value="21006" />
+		<property name="city" value="Huelva" />
+		<property name="country" value="España" />
+		<property name="baneado" value="false" />
+		<property name="userAccount" ref="userAccount4" />
+	</bean>
+	<!-- CUSTOMERS -->
+	<!-- <bean id="customer1" class="domain.Customer">
+		<property name="name" value="administrator1" />
+		<property name="lastName" value="paco" />
+		<property name="email" value="administrator1@mail.com" />
+		<property name="phone" value="Phone-1" />
+		<property name="photo" value="https://www.google.com" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>  -->
+	<!-- TRAINERS -->
+	<!-- <bean id="trainer1" class="domain.Trainer">
+		<property name="name" value="administrator1" />
+		<property name="lastName" value="paco" />
+		<property name="email" value="administrator1@mail.com" />
+		<property name="phone" value="Phone-1" />
+		<property name="photo" value="https://www.google.com" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+	 -->
 </beans>

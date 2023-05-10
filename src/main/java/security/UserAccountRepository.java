@@ -1,8 +1,8 @@
 /*
  * UserAccountRepository.java
- * 
+ *
  * Copyright (C) 2018 Universidad de Sevilla
- * 
+ *
  * The use of this project is hereby constrained to the conditions of the
  * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
@@ -19,5 +19,8 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, Intege
 
 	@Query("select ua from UserAccount ua where ua.username = ?1")
 	UserAccount findByUsername(String username);
+
+	@Query("select a.userAccount from Actor a where a.id = ?1")
+	UserAccount findByActorId(int actorId);
 
 }

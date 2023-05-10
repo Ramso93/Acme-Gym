@@ -1,7 +1,6 @@
 #./src/main/resources/Entities.map
-#Tue May 09 20:04:47 CEST 2023
-userAccount5=10
-userAccount4=9
-userAccount3=8
-userAccount2=7
-userAccount1=6
+#Wed May 10 02:40:31 CEST 2023
+administrator1=7
+userAccount4=6
+userAccount1=5
+manager1=8
