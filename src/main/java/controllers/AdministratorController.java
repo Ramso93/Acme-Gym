@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import domain.Actor;
-import services.ActorService;
+import domain.Manager;
+import services.ManagerService;
 
 @Controller
-@RequestMapping("/actor/administrator")
+@RequestMapping("/administrator")
 public class AdministratorController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private ActorService actorService;
+	private ManagerService managerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -38,23 +38,23 @@ public class AdministratorController extends AbstractController {
 	}
 
 	// Listing ----------------------------------------------------------------
-	@RequestMapping(value = "/listActor", method = RequestMethod.GET)
+	@RequestMapping(value = "/listManagers", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<Actor> actors;
+		final Collection<Manager> managers;
 
-		actors = this.actorService.findAll();
-		result = new ModelAndView("actor/listActor");
-		result.addObject("actors", actors);
-
+		managers = this.managerService.findAll();
+		result = new ModelAndView("administrator/listManagers");
+		result.addObject("requestURI", "administrator/listManagers.do");
+		result.addObject("managers", managers);
 		return result;
 	}
 	// Action-1 ---------------------------------------------------------------
 
 	@RequestMapping("/action-1")
 	public ModelAndView action1() {
+		//request.
 		ModelAndView result;
-
 		result = new ModelAndView("administrator/action-1");
 
 		return result;

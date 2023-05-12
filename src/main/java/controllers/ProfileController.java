@@ -1,8 +1,8 @@
 /*
  * ProfileController.java
- * 
+ *
  * Copyright (C) 2018 Universidad de Sevilla
- * 
+ *
  * The use of this project is hereby constrained to the conditions of the
  * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
@@ -18,7 +18,32 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/profile")
 public class ProfileController extends AbstractController {
 
-	// Action-1 ---------------------------------------------------------------		
+	// Services ---------------------------------------------------------------
+
+	//@Autowired
+	//private ActorService actorService;
+	//@Autowired
+	//private LoginService	loginService;
+
+	// MY profile ---------------------------------------------------------------
+	/*
+	 * @RequestMapping("/myprofile")
+	 * public ModelAndView myprofile() {
+	 *
+	 * final UserAccount user = LoginService.getPrincipal();
+	 * System.out.println("useraccount: " + user.getId() + " " + user.getUsername());
+	 * Actor myprofile = null;
+	 * if (user.getAuthorities().contains(Authority.ADMIN))
+	 * myprofile = this.actorService.findByID(user.getId());
+	 * ModelAndView result;
+	 *
+	 * result = new ModelAndView("profile/myprofile");
+	 * result.addObject("myprofile", myprofile);
+	 *
+	 * return result;
+	 * }
+	 */
+	// Action-1 ---------------------------------------------------------------
 
 	@RequestMapping("/action-1")
 	public ModelAndView action1() {
@@ -29,7 +54,7 @@ public class ProfileController extends AbstractController {
 		return result;
 	}
 
-	// Action-2 ---------------------------------------------------------------		
+	// Action-2 ---------------------------------------------------------------
 
 	@RequestMapping("/action-2")
 	public ModelAndView action2() {
@@ -40,7 +65,7 @@ public class ProfileController extends AbstractController {
 		return result;
 	}
 
-	// Action-2 ---------------------------------------------------------------		
+	// Action-2 ---------------------------------------------------------------
 
 	@RequestMapping("/action-3")
 	public ModelAndView action3() {

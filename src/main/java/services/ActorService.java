@@ -1,7 +1,7 @@
 
 package services;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -36,8 +36,8 @@ public class ActorService {
 
 	// Simple CRUD methods ----------------------------------------------------
 
-	public Collection<Actor> findAll() {
-		Collection<Actor> result;
+	public List<Actor> findAll() {
+		List<Actor> result;
 
 		result = this.actorRepository.findAll();
 		Assert.notNull(result);
@@ -85,4 +85,18 @@ public class ActorService {
 
 		return result;
 	}
+	// ADMIN -----
+
+	/*
+	 * public Administrator findByID(final int actorId) {
+	 * Assert.isTrue(actorId != 0);
+	 *
+	 * Administrator result;
+	 *
+	 * result = this.administratorRepository.findByID(actorId);
+	 * Assert.notNull(result);
+	 *
+	 * return result;
+	 * }
+	 */
 }

@@ -9,8 +9,8 @@ import javax.persistence.Entity;
 @Access(AccessType.PROPERTY)
 public class Administrator extends Actor {
 
+	//@JoinColumn(name = "accounts_entity_id")
 	// Constructors -----------------------------------------------------------
-
 	public Administrator() {
 		super();
 	}
