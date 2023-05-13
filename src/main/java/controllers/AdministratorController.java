@@ -11,6 +11,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Manager;
+import services.AdministratorService;
 import services.ManagerService;
 
 @Controller
@@ -28,7 +30,9 @@ public class AdministratorController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private ManagerService managerService;
+	private ManagerService			managerService;
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -47,6 +51,19 @@ public class AdministratorController extends AbstractController {
 		result = new ModelAndView("administrator/listManagers");
 		result.addObject("requestURI", "administrator/listManagers.do");
 		result.addObject("managers", managers);
+		return result;
+	}
+
+	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
+	public ModelAndView statistics() {
+		ModelAndView result;
+		Collection<Map<String, Double>> statistics;
+
+		statistics = this.administratorService.statistics();
+		result = new ModelAndView("administrator/statistics");
+		result.addObject("requestURI", "administrator/statistics.do");
+		result.addObject("statistics", statistics);
+
 		return result;
 	}
 	// Action-1 ---------------------------------------------------------------

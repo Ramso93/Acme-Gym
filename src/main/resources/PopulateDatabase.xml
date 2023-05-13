@@ -30,33 +30,6 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-	 -->
 	<bean id="userAccount4" class="security.UserAccount">
 		<property name="username" value="manager" />
 		<property name="password" value="1d0258c2440a8d19e716292b231e3190" />
@@ -68,21 +41,6 @@
 			</list>
 		</property>
 	</bean>
-	<!-- Prueba: añadiendo perfil TRAINER -->
-	<!-- 
-	<bean id="userAccount5" class="security.UserAccount">
-		<property name="username" value="trainer" />
-		<property name="password" value="2c065aae9fcb37b49043a5a2012b3dbf" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="TRAINER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-	 -->
-	<!-- Other domain beans come here -->
 	<!-- ADMINS -->
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="administrator1" />
@@ -104,6 +62,11 @@
 		<property name="city" value="Huelva" />
 		<property name="country" value="España" />
 		<property name="baneado" value="false" />
+		<property name="gyms">
+			<list>
+				<ref bean="gym1" />
+			</list>
+		</property>
 		<property name="userAccount" ref="userAccount4" />
 	</bean>
 	<!-- CUSTOMERS -->
@@ -125,4 +88,13 @@
 		<property name="userAccount" ref="userAccount1" />
 	</bean>
 	 -->
+	 <!-- Gym -->
+	 <bean id="gym1" class="domain.Gym">
+		<property name="logo" value="https://www.ejemplo.com/" />
+		<property name="name" value="gym1" />
+		<property name="address" value="avenida gym1 num 1" />
+		<property name="fee" value="11.11" />
+		<property name="active" value="false" />
+		<property name="manager" ref="manager1" />
+	</bean>
 </beans>
