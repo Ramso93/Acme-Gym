@@ -41,5 +41,8 @@
 	
 	<spring:message code="actor.country" var="countryHeader" />
 	<display:column property="country" title="${countryHeader}" sortable="false" />
-
+	
+	<spring:message code="actor.baneado" var="baneadoHeader" />
+	<display:column property="baneado" title="${baneadoHeader}" sortable="false" />
+	
 </display:table>

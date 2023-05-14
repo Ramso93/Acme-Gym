@@ -25,10 +25,11 @@ public class Manager extends Actor {
 
 
 	//Relationships
-	@OneToMany(mappedBy = "manager")
+
 	private Collection<Gym> gyms;
 
 
+	@OneToMany(mappedBy = "manager")
 	public Collection<Gym> getGyms() {
 		return this.gyms;
 	}

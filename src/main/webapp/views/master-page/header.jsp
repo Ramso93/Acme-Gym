@@ -37,21 +37,21 @@
 			</li>
 		</security:authorize>
 		<li>
-				<a class="fNiv"> 
-					<spring:message code="master.page.catalogue" />
-				</a>
+			<a class="fNiv"> 
+				<spring:message code="master.page.catalogue" />
+			</a>
 		<%-- SE PODRÁ VER Anotaciones en Gym, Actividad y Entrenamiento --%>
-				<ul>
-					<li class="arrow"></li>
+			<ul>
+				<li class="arrow"></li>
 		<%-- Catalogo de Gyms ->Actividades del gym ->Entrenadores que las imparten --%>
-					<li><a ><spring:message code="master.page.catalogue.gym" /></a></li>
+				<li><a ><spring:message code="master.page.catalogue.gym" /></a></li>
 		<%-- Catalogo de Actividades ->Gyms/Entrenadores que la imparten--%>
 			<%-- Buscador de Actividades por palabra clave en Tit/Desc --%>
-					<li><a ><spring:message code="master.page.catalogue.activity" /></a></li>
+				<li><a ><spring:message code="master.page.catalogue.activity" /></a></li>
 		<%-- Catalogo de Entrenamientos reco --%>
 			<%-- Buscador de Entrenamiento por palabra clave en Tit/Desc --%>
-					<li><a ><spring:message code="master.page.catalogue.workout" /></a></li>
-				</ul>
+				<li><a ><spring:message code="master.page.catalogue.workout" /></a></li>
+			</ul>
 		</li>
 		
 		<security:authorize access="hasRole('ADMIN')">
@@ -61,7 +61,7 @@
 					 <li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li> 
 					<%-- <li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li> --%>
 					<li><a href="administrator/listManagers.do"><spring:message code="master.page.administrator.ban" /></a></li>
-					<li><a href=""><spring:message code="master.page.administrator.info" /></a></li>				
+					<li><a href="administrator/statistics.do"><spring:message code="master.page.administrator.info" /></a></li>				
 				</ul>
 			</li>
 		</security:authorize>

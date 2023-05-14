@@ -10,8 +10,8 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,12 +57,12 @@ public class AdministratorController extends AbstractController {
 	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
 	public ModelAndView statistics() {
 		ModelAndView result;
-		Collection<Map<String, Double>> statistics;
+		Collection<Object[]> statistics1 = new ArrayList<>();
 
-		statistics = this.administratorService.statistics();
+		statistics1 = this.administratorService.statistics();
 		result = new ModelAndView("administrator/statistics");
 		result.addObject("requestURI", "administrator/statistics.do");
-		result.addObject("statistics", statistics);
+		result.addObject("statistics1", statistics1);
 
 		return result;
 	}
