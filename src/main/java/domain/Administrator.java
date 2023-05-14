@@ -11,9 +11,11 @@ public class Administrator extends Actor {
 
 	//@JoinColumn(name = "accounts_entity_id")
 	// Constructors -----------------------------------------------------------
-	public Administrator() {
-		super();
-	}
+	/*
+	 * public Administrator() {
+	 * super();
+	 * }
+	 */
 
 	// Attributes -------------------------------------------------------------
 

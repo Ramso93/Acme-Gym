@@ -12,6 +12,13 @@ import javax.persistence.OneToMany;
 @Access(AccessType.PROPERTY)
 public class Manager extends Actor {
 
+	//constructor
+	/*
+	 * public Manager() {
+	 * super();
+	 * }
+	 */
+
 	//atributos
 	private boolean baneado;
 

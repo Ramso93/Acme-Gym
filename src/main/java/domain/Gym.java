@@ -2,11 +2,14 @@
 package domain;
 
 import java.net.URL;
+import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -73,7 +76,9 @@ public class Gym extends DomainEntity {
 
 	// relation
 
-	private Manager manager;
+	private Manager					manager;
+	private Collection<Register>	registers;
+	private Collection<Annotation>	annotations;
 
 
 	@ManyToOne(optional = false)
@@ -83,5 +88,22 @@ public class Gym extends DomainEntity {
 
 	public void setManager(final Manager manager) {
 		this.manager = manager;
+	}
+
+	// Relación uno a muchos con register (opcional)
+	@OneToMany(mappedBy = "gym", cascade = CascadeType.ALL)
+	public Collection<Register> getRegisters() {
+		return this.registers;
+	}
+	public void setRegisters(final Collection<Register> registers) {
+		this.registers = registers;
+	}
+
+	@OneToMany(mappedBy = "gym")
+	public Collection<Annotation> getAnnotations() {
+		return this.annotations;
+	}
+	public void setAnnotations(final Collection<Annotation> annotations) {
+		this.annotations = annotations;
 	}
 }
