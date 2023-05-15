@@ -18,7 +18,6 @@
 
 <display:table pagesize="7" class="displaytag" keepStatus="true"
 	name="managers" requestURI="${requestURI}" id="row">
-	
 	<!-- Attributes -->
 	
 	<spring:message code="actor.name" var="nameHeader" />
@@ -42,11 +41,10 @@
 	<spring:message code="actor.country" var="countryHeader" />
 	<display:column property="country" title="${countryHeader}" sortable="false" />
 	
+	
 	<security:authorize access="hasRole('ADMIN')">
-		<spring:message code="actor.baneado" var="baneadoHeader" />
-		<display:column property="baneado" title="${baneadoHeader}" sortable="false" />
 		<display:column>
-			<a href="${row.id}">
+			<a href="administrator/ban.do?managerId=${row.id}">
 				<jstl:choose>
 					<jstl:when test="${row.userAccount.enabled == false}">
 						<spring:message code="administrator.unban" />
@@ -58,6 +56,8 @@
 			</a>
 		</display:column>
 	</security:authorize>
+	
+	
 	
 	
 </display:table>

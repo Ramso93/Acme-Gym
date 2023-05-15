@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Customer;
@@ -49,11 +50,13 @@ public class AdministratorController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		final Collection<Manager> managers;
-
 		managers = this.managerService.findAll();
+		for (final Manager manager : managers)
+			System.out.println("manager: " + manager.getUserAccount().getEnabled());
 		result = new ModelAndView("administrator/listManagers");
 		result.addObject("requestURI", "administrator/listManagers.do");
 		result.addObject("managers", managers);
+
 		return result;
 	}
 
@@ -88,6 +91,19 @@ public class AdministratorController extends AbstractController {
 		result.addObject("statistics6", statistics6);
 		result.addObject("statistics7", statistics7);
 		result.addObject("statistics8", statistics8);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	public ModelAndView banear(@RequestParam final int managerId) {
+		ModelAndView result;
+		try {
+			this.managerService.ban(managerId);
+			result = new ModelAndView("redirect:/administrator/listManagers.do");
+		} catch (final Throwable ex) {
+			result = new ModelAndView("redirect:/administrator/listManagers.do");
+		}
 
 		return result;
 	}

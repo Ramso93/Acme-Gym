@@ -20,16 +20,17 @@ public class Manager extends Actor {
 	 */
 
 	//atributos
-	private boolean baneado;
-
-
-	public boolean isBaneado() {
-		return this.baneado;
-	}
-	public void setBaneado(final boolean baneado) {
-		this.baneado = baneado;
-	}
-
+	/*
+	 * private boolean baneado;
+	 * 
+	 * 
+	 * public boolean isBaneado() {
+	 * return this.baneado;
+	 * }
+	 * public void setBaneado(final boolean baneado) {
+	 * this.baneado = baneado;
+	 * }
+	 */
 
 	//Relationships
 

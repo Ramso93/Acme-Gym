@@ -16,11 +16,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
-	<!-- USER ACCOUNTS -->
+<!-- USER ACCOUNTS -->
 
 	<bean id="userAccount1" class="security.UserAccount">
 		<property name="username" value="admin" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="enabled" value ="true"/>
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -32,6 +33,7 @@
 	<bean id="userAccount4" class="security.UserAccount">
 		<property name="username" value="manager" />
 		<property name="password" value="1d0258c2440a8d19e716292b231e3190" />
+		<property name="enabled" value ="true"/>
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -43,6 +45,7 @@
 	<bean id="userAccount2" class="security.UserAccount">
 		<property name="username" value="customer" />
 		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="enabled" value ="true"/>
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -54,6 +57,7 @@
 	<bean id="userAccount3" class="security.UserAccount">
 		<property name="username" value="trainer" />
 		<property name="password" value="2c065aae9fcb37b49043a5a2012b3dbf" />
+		<property name="enabled" value ="true"/>
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -62,7 +66,8 @@
 			</list>
 		</property>
 	</bean>
-	<!-- ADMINS -->
+	
+<!-- ADMINS -->
 	
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="administrator1" />
@@ -74,7 +79,9 @@
 		<property name="country" value="España" />
 		<property name="userAccount" ref="userAccount1" />
 	</bean>
-	<!-- MANAGERS  -->
+	
+<!-- MANAGERS  -->
+	
 	<bean id="manager1" class="domain.Manager">
 		<property name="name" value="manager1" />
 		<property name="surname" value="surname" />
@@ -83,7 +90,7 @@
 		<property name="postalAddres" value="21006" />
 		<property name="city" value="Huelva" />
 		<property name="country" value="España" />
-		<property name="baneado" value="false" />
+		<!--<property name="baneado" value="false" />-->
 		<property name="gyms">
 			<list>
 				<ref bean="gym1" />
@@ -92,7 +99,8 @@
 		<property name="userAccount" ref="userAccount4" />
 	</bean>
 
-	<!-- TRAINERS -->
+<!-- TRAINERS -->
+	
 	<bean id="trainer1" class="domain.Trainer">
 		<property name="name" value="trainer1" />
 		<property name="surname" value="surname" />
@@ -108,7 +116,9 @@
 			</list>
 		</property>
 	</bean>
-	 <!-- CUSTOMERS -->
+	
+<!-- CUSTOMERS -->
+	 
 	<bean id="customer1" class="domain.Customer">
 		<property name="name" value="customer1" />
 		<property name="surname" value="surname" />
@@ -138,7 +148,8 @@
 		</property>
 	</bean>
 	
-	 <!-- GYMS -->
+<!-- GYMS -->
+	 
 	 <bean id="gym1" class="domain.Gym">
 		<property name="logo" value="https://www.ejemplo.com/" />
 		<property name="name" value="gym1" />
@@ -163,9 +174,13 @@
 			</list>
 		</property>
 	</bean>
-	<!-- REGISTERS -->
 	
-	<!-- ACTIVITIES -->
+<!-- REGISTERS -->
+	
+	
+	
+<!-- ACTIVITIES -->
+	
 	<!--<bean id="domingo" class="domain.daysEnum" factory-method="valueOf">
 	  <constructor-arg value="DOMINGO" />
 	</bean>-->
@@ -202,7 +217,8 @@
 		<property name="gym" ref="gym1"/>
 	</bean>
 	
-	<!-- WORKOUTS -->
+<!-- WORKOUTS -->
+	
 	<bean id="workout1" class="domain.Workout">
 		<property name="title" value="title1"/>
 		<property name="description" value="description1"/>
@@ -214,14 +230,20 @@
 		</property>
 	</bean>
 	
-	<!-- STEPS -->
+<!-- STEPS -->
+	
 	<bean id="step1" class="domain.Step">
 		<property name="description" value="https://www.ejemplo.com/"/>
 		<property name="tutorial" value="https://www.ejemplo.com/"/>
 		<property name="workout" ref="workout1"/>
 	</bean>
-	<!-- CURRICULUMS -->
 	
-	<!-- SOCIALIDENTITIES -->
+<!-- CURRICULUMS -->
+	
+	
+	
+<!-- SOCIALIDENTITIES -->
+	
+	
 	
 </beans>
