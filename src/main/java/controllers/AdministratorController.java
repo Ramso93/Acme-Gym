@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.Customer;
+import domain.Gym;
 import domain.Manager;
+import domain.Workout;
 import services.AdministratorService;
 import services.ManagerService;
 
@@ -58,11 +61,33 @@ public class AdministratorController extends AbstractController {
 	public ModelAndView statistics() {
 		ModelAndView result;
 		Collection<Object[]> statistics1 = new ArrayList<>();
+		Collection<Object[]> statistics2 = new ArrayList<Object[]>();
+		Collection<Object[]> statistics3 = new ArrayList<Object[]>();
+		Collection<Gym> statistics4 = new ArrayList<Gym>();
+		Collection<Customer> statistics5 = new ArrayList<Customer>();
+		Collection<Object[]> statistics6 = new ArrayList<Object[]>();
+		Collection<Object[]> statistics7 = new ArrayList<Object[]>();
+		Collection<Workout> statistics8 = new ArrayList<Workout>();
 
 		statistics1 = this.administratorService.statistics();
+		statistics2 = this.administratorService.statistics2();
+		statistics3 = this.administratorService.statistics3();
+		statistics4 = this.administratorService.statistics4();
+		statistics5 = this.administratorService.statistics5();
+		statistics6 = this.administratorService.statistics6();
+		statistics7 = this.administratorService.statistics7();
+		statistics8 = this.administratorService.statistics8();
+
 		result = new ModelAndView("administrator/statistics");
 		result.addObject("requestURI", "administrator/statistics.do");
 		result.addObject("statistics1", statistics1);
+		result.addObject("statistics2", statistics2);
+		result.addObject("statistics3", statistics3);
+		result.addObject("statistics4", statistics4);
+		result.addObject("statistics5", statistics5);
+		result.addObject("statistics6", statistics6);
+		result.addObject("statistics7", statistics7);
+		result.addObject("statistics8", statistics8);
 
 		return result;
 	}

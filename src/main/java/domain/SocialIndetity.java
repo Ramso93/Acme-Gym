@@ -1,11 +1,12 @@
 
 package domain;
 
+import java.net.URL;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-
-import org.hibernate.validator.constraints.URL;
+// import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)

@@ -3,12 +3,17 @@ package domain;
 
 import java.sql.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Register extends DomainEntity {
 
 	//constructor

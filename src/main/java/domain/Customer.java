@@ -5,10 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -85,7 +83,8 @@ public class Customer extends Actor {
 
 
 	// Relación uno a muchos con register
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "customers", cascade = CascadeType.ALL)
+	@ManyToMany
 	public Collection<Gym> getGyms() {
 		return this.gyms;
 	}

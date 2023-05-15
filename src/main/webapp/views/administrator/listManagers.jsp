@@ -42,7 +42,22 @@
 	<spring:message code="actor.country" var="countryHeader" />
 	<display:column property="country" title="${countryHeader}" sortable="false" />
 	
-	<spring:message code="actor.baneado" var="baneadoHeader" />
-	<display:column property="baneado" title="${baneadoHeader}" sortable="false" />
+	<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="actor.baneado" var="baneadoHeader" />
+		<display:column property="baneado" title="${baneadoHeader}" sortable="false" />
+		<display:column>
+			<a href="${row.id}">
+				<jstl:choose>
+					<jstl:when test="${row.userAccount.enabled == false}">
+						<spring:message code="administrator.unban" />
+					</jstl:when>
+					<jstl:otherwise>
+						<spring:message code="administrator.ban" />
+					</jstl:otherwise>
+				</jstl:choose>
+			</a>
+		</display:column>
+	</security:authorize>
+	
 	
 </display:table>

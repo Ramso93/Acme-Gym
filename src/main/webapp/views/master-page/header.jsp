@@ -23,7 +23,6 @@
 		<%-- FUNCIONES SEGUN EL ROL QUE TENGA ACTOR SON VISIBLES O NO --%>
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
-			<%-- <li><a class="fNiv" href="security/register.do"><spring:message code="master.page.register" /></a></li> --%>
 			<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.register" />
@@ -36,20 +35,20 @@
 				
 			</li>
 		</security:authorize>
+		<%-- SE PODRÁ VER Anotaciones en Gym, Actividad y Entrenamiento --%>
+		<%-- Catalogo de Gyms ->Actividades del gym ->Entrenadores que las imparten --%>
+		<%-- Catalogo de Actividades ->Gyms/Entrenadores que la imparten--%>
+			<%-- Buscador de Actividades por palabra clave en Tit/Desc --%>
+		<%-- Catalogo de Entrenamientos reco --%>
+			<%-- Buscador de Entrenamiento por palabra clave en Tit/Desc --%>
 		<li>
 			<a class="fNiv"> 
 				<spring:message code="master.page.catalogue" />
 			</a>
-		<%-- SE PODRÁ VER Anotaciones en Gym, Actividad y Entrenamiento --%>
 			<ul>
 				<li class="arrow"></li>
-		<%-- Catalogo de Gyms ->Actividades del gym ->Entrenadores que las imparten --%>
 				<li><a ><spring:message code="master.page.catalogue.gym" /></a></li>
-		<%-- Catalogo de Actividades ->Gyms/Entrenadores que la imparten--%>
-			<%-- Buscador de Actividades por palabra clave en Tit/Desc --%>
 				<li><a ><spring:message code="master.page.catalogue.activity" /></a></li>
-		<%-- Catalogo de Entrenamientos reco --%>
-			<%-- Buscador de Entrenamiento por palabra clave en Tit/Desc --%>
 				<li><a ><spring:message code="master.page.catalogue.workout" /></a></li>
 			</ul>
 		</li>
@@ -58,9 +57,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					 <li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li> 
-					<%-- <li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li> --%>
-					<li><a href="administrator/listManagers.do"><spring:message code="master.page.administrator.ban" /></a></li>
+				 	<li><a href="administrator/listManagers.do"><spring:message code="master.page.administrator.ban" /></a></li>
 					<li><a href="administrator/statistics.do"><spring:message code="master.page.administrator.info" /></a></li>				
 				</ul>
 			</li>
@@ -69,9 +66,7 @@
 		<security:authorize access="hasRole('CUSTOMER')">
 			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
 				<ul>
-					<li class="arrow"></li>
-					<%-- <li><a href="customer/action-1.do"><spring:message code="master.page.customer.action.1" /></a></li> --%>
-					<%-- <li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li> --%>					
+					<li class="arrow"></li>					
 					<li><a href=""><spring:message code="master.page.customer.join_leaveGym" /></a></li>
 					<li><a href=""><spring:message code="master.page.customer.jois_leaveActivity" /></a></li>
 				</ul>
@@ -103,10 +98,7 @@
 					<li><a href="profile/myprofile.do"><spring:message code="master.page.profile.myprofile" /></a></li>
 					<security:authorize access="hasRole('TRAINER')">
 						<li><a href=""><spring:message code="master.page.trainer.editcv" /></a></li>
-					</security:authorize>
-					<%-- <li><a href="profile/action-1.do"><spring:message code="master.page.profile.action.1" /></a></li> --%>
-					<%-- <li><a href="profile/action-2.do"><spring:message code="master.page.profile.action.2" /></a></li> --%>
-					<%-- <li><a href="profile/action-3.do"><spring:message code="master.page.profile.action.3" /></a></li> --%>			
+					</security:authorize>			
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

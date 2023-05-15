@@ -1,7 +1,15 @@
 #./src/main/resources/Entities.map
-#Sun May 14 01:55:05 CEST 2023
-administrator1=8
-gym1=10
-userAccount4=7
-userAccount1=6
-manager1=9
+#Mon May 15 02:31:59 CEST 2023
+trainer1=20
+gym1=22
+step1=26
+workout1=25
+activity2=24
+administrator1=18
+activity1=23
+manager1=19
+userAccount4=15
+userAccount3=17
+customer1=21
+userAccount2=16
+userAccount1=14

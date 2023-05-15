@@ -2,7 +2,6 @@
 package domain;
 
 import java.net.URL;
-import java.sql.Time;
 import java.util.Collection;
 
 import javax.persistence.Access;
@@ -14,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -38,8 +38,10 @@ public class Activity extends DomainEntity {
 	private URL			pictures;
 	private String		description;
 	private daysEnum	dayWeek;
-	private Time		startTime;
-	private Time		endTime;
+	//private Date		startTime;
+	//private Date		endTime;
+	private String		startTime;
+	private String		endTime;
 	private int			seatsAvailable;
 	private boolean		cancel;
 
@@ -73,17 +75,19 @@ public class Activity extends DomainEntity {
 		this.dayWeek = dayWeek;
 	}
 
-	public Time getStartTime() {
+	@Pattern(regexp = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")
+	public String getStartTime() {
 		return this.startTime;
 	}
-	public void setStartTime(final Time startTime) {
+	public void setStartTime(final String startTime) {
 		this.startTime = startTime;
 	}
 
-	public Time getEndTime() {
+	@Pattern(regexp = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")
+	public String getEndTime() {
 		return this.endTime;
 	}
-	public void setEndTime(final Time endTime) {
+	public void setEndTime(final String endTime) {
 		this.endTime = endTime;
 	}
 	@NotNull

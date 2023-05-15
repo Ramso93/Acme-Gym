@@ -8,6 +8,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
@@ -77,7 +78,11 @@ public class Gym extends DomainEntity {
 	// relation
 
 	private Manager					manager;
+	private Collection<Trainer>		trainers;
+	private Collection<Customer>	customers;
 	private Collection<Register>	registers;
+	private Collection<Activity>	activities;
+	private Collection<Workout>		workouts;
 	private Collection<Annotation>	annotations;
 
 
@@ -88,6 +93,15 @@ public class Gym extends DomainEntity {
 
 	public void setManager(final Manager manager) {
 		this.manager = manager;
+	}
+
+	//@OneToMany(mappedBy = "gyms", cascade = CascadeType.ALL)
+	@ManyToMany
+	public Collection<Customer> getCustomers() {
+		return this.customers;
+	}
+	public void setCustomers(final Collection<Customer> customers) {
+		this.customers = customers;
 	}
 
 	// Relación uno a muchos con register (opcional)
@@ -106,4 +120,29 @@ public class Gym extends DomainEntity {
 	public void setAnnotations(final Collection<Annotation> annotations) {
 		this.annotations = annotations;
 	}
+
+	@OneToMany(mappedBy = "gym")
+	public Collection<Trainer> getTrainers() {
+		return this.trainers;
+	}
+	public void setTrainers(final Collection<Trainer> trainers) {
+		this.trainers = trainers;
+	}
+
+	@OneToMany(mappedBy = "gym")
+	public Collection<Activity> getActivities() {
+		return this.activities;
+	}
+	public void setActivities(final Collection<Activity> activities) {
+		this.activities = activities;
+	}
+
+	@OneToMany(mappedBy = "gym")
+	public Collection<Workout> getWorkouts() {
+		return this.workouts;
+	}
+	public void setWorkouts(final Collection<Workout> workouts) {
+		this.workouts = workouts;
+	}
+
 }
