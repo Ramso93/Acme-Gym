@@ -30,4 +30,10 @@
 		<put-attribute name="title" value="My profile" />
 		<put-attribute name="body" value="/views/profile/myprofile.jsp" />
 	</definition>
+	
+	<definition name="profile/myprofile/edit" extends="master.page">	
+		<put-attribute name="title" value="My profile" />
+		<put-attribute name="body" value="/views/profile/edit.jsp" />
+	</definition>
+	
 </tiles-definitions>

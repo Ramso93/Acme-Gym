@@ -10,8 +10,11 @@
 
 package controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,6 +47,51 @@ public class ProfileController extends AbstractController {
 		result.addObject("actor", actor);
 		System.out.println("name: " + perfil.getName());
 		System.out.println("nameactor: " + actor.getName());
+		return result;
+	}
+
+	@RequestMapping(value = "/myprofile/edit", method = RequestMethod.GET)
+	public ModelAndView editProfile() {
+		ModelAndView result;
+		final Actor myprofile = this.actorService.findByPrincipal();
+		result = new ModelAndView("profile/myprofile/edit");
+		result.addObject("myprofile", myprofile);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/myprofile/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final Actor myprofile, final BindingResult binding) {
+		ModelAndView result;
+		Actor myprofile2;
+		try {
+			myprofile2 = this.actorService.comprobarPA(myprofile, binding);
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(myprofile, "actor.save.error");
+			else {
+				myprofile2 = this.actorService.comprobarPA2(myprofile, binding);
+				result = new ModelAndView("redirect:/profile/myprofile.do");
+				myprofile2 = this.actorService.save(myprofile);
+			}
+		} catch (final Throwable exc) {
+			result = this.createEditModelAndView(myprofile, "actor.save.error");
+		}
+
+		return result;
+	}
+
+	/*
+	 * private ModelAndView createEditModelAndView(final Actor myprofile) {
+	 * final ModelAndView result = this.createEditModelAndView(myprofile, null);
+	 *
+	 * return result;
+	 * }
+	 */
+	private ModelAndView createEditModelAndView(final Actor myprofile, final String msg) {
+		final ModelAndView result = new ModelAndView("profile/myprofile/edit");
+		result.addObject("myprofile", myprofile);
+		result.addObject("msg", msg);
+
 		return result;
 	}
 	// Profile foreign

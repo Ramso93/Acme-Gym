@@ -15,24 +15,28 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
- 
+
+
 <form:form modelAttribute="perfil">
+	<fieldset>
 	<spring:message code="profile.name"/>:<br>
 	<form:input type="text" path="name" value="${perfil.name}" disabled="true"/><br>
 	<spring:message code="profile.surname"/>:<br>
-	<form:input type="text" path="surname" value="${perfil.surname}"/><br>
+	<form:input type="text" path="surname" value="${perfil.surname}" disabled="true"/><br>
 	<spring:message code="profile.email"/>:<br>
-	<form:input type="text" path="email" value="${perfil.email}"/><br>
+	<form:input type="text" path="email" value="${perfil.email}" disabled="true"/><br>
 	<spring:message code="profile.phoneNumber"/>:<br>
-	<form:input type="text" path="phoneNumber" value="${perfil.phoneNumber}"/><br>
+	<form:input type="text" path="phoneNumber" value="${perfil.phoneNumber}" disabled="true"/><br>
 	<spring:message code="profile.postalAddres"/>:<br>
-	<form:input type="text" path="postalAddres" value="${perfil.postalAddres}"/><br>
+	<form:input type="text" path="postalAddres" value="${perfil.postalAddres}" disabled="true"/><br>
 	<spring:message code="profile.city"/>:<br>
-	<form:input type="text" path="city" value="${perfil.city}"/><br>
+	<form:input type="text" path="city" value="${perfil.city}" disabled="true"/><br>
 	<spring:message code="profile.country"/>:<br>
-	<form:input type="text" path="country" value="${perfil.country}"/>
+	<form:input type="text" path="country" value="${perfil.country}" disabled="true"/>
+	
+	</fieldset>
 </form:form>
 <jstl:if test="${actor.id == perfil.id}">
-	<a href="actor/editProfile.do"><spring:message code="profile.edit"/></a>
+<a href="profile/myprofile/edit.do"><spring:message code="profile.edit"/></a>
 </jstl:if>
  

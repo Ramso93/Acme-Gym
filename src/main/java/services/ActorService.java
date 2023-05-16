@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 import domain.Actor;
 import repositories.ActorRepository;
@@ -103,6 +105,49 @@ public class ActorService {
 		Actor result;
 
 		result = this.actorRepository.findByUserAccountId(userAccount.getId());
+
+		return result;
+	}
+
+	public Actor comprobarPA(final Actor myprofile, final BindingResult binding) {
+		final Actor result = this.findByPrincipal();
+		this.comprobarpostalAddres(myprofile.getPostalAddres(), binding);
+
+		return result;
+	}
+	public Actor comprobarPA2(final Actor myprofile, final BindingResult binding) {
+		final Actor result = this.findByPrincipal();
+		result.setName(myprofile.getName());
+		result.setSurname(myprofile.getSurname());
+		result.setPhoneNumber(myprofile.getPhoneNumber());
+		result.setEmail(myprofile.getEmail());
+		result.setPostalAddres(myprofile.getPostalAddres());
+		result.setCity(myprofile.getCity());
+		result.setCountry(myprofile.getCountry());
+
+		this.comprobarpostalAddres(myprofile.getPostalAddres(), binding);
+
+		return result;
+	}
+	private boolean comprobarpostalAddres(final String postalAddres, final BindingResult binding) {
+		FieldError error;
+		String[] codigos;
+		boolean result;
+
+		if (postalAddres == null || postalAddres.isEmpty())
+			result = true;
+		else
+			result = false;
+
+		if (!result)
+			if (postalAddres.matches("^[0-9]{5}$"))
+				result = true;
+			else {
+				codigos = new String[1];
+				codigos[0] = "actor.postalAddress.error";
+				error = new FieldError("actorForm", "postalAddres", postalAddres, false, codigos, null, "");
+				binding.addError(error);
+			}
 
 		return result;
 	}

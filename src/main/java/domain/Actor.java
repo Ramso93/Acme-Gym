@@ -30,7 +30,7 @@ public abstract class Actor extends DomainEntity {
 	private String	surname;
 	private String	email;
 	private String	phoneNumber;
-	private int		postalAddres;
+	private String	postalAddres;
 	private String	city;
 	private String	country;
 
@@ -65,10 +65,10 @@ public abstract class Actor extends DomainEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getPostalAddres() {
+	public String getPostalAddres() {
 		return this.postalAddres;
 	}
-	public void setPostalAddres(final int postalAddres) {
+	public void setPostalAddres(final String postalAddres) {
 		this.postalAddres = postalAddres;
 	}
 	@NotBlank
