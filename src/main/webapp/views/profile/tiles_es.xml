@@ -61,4 +61,9 @@
 		<put-attribute name="body" value="/views/profile/listTrainerByActivity.jsp" />
 	</definition>
 	
+	<definition name="profile/listGymByActivity" extends="master.page">	
+		<put-attribute name="title" value="Datos gimnasio" />
+		<put-attribute name="body" value="/views/profile/listGymByActivity.jsp" />
+	</definition>
+	
 </tiles-definitions>

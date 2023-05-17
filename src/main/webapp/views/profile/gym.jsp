@@ -34,7 +34,7 @@
 	<jstl:choose>
 		<jstl:when test="${row.active == true}">
 			<display:column>
-				<a href="profile/activity.do?activityId=${row.id}">
+				<a href="profile/listActivityByGymId.do?activityId=${row.id}">
 					<spring:message code="gym.see_activities"/>
 				</a>
 			</display:column>

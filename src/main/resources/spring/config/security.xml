@@ -68,6 +68,7 @@
 		
 		<security:intercept-url pattern="/profile/Workout.do" access="permitAll"/>
 		<security:intercept-url pattern="/profile/listTrainerByActivity.do" access="permitAll"/>
+		<security:intercept-url pattern="/profile/listGymByActivity.do" access="permitAll"/>
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

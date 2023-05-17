@@ -50,7 +50,7 @@
 			
 			<jstl:if test="${row.gym.active == false }">
 				<display:column>
-						<a href="gym/listGymByActivity.do?activityId=${row.id}">
+						<a href="profile/listGymByActivity.do?activityId=${row.id}">
 							<spring:message code="activity.listGym" />
 						</a>
 				</display:column>

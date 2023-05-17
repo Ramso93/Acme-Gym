@@ -23,4 +23,9 @@ public class GymService {
 		final Collection<Gym> gyms = this.gymRepository.findAll();
 		return gyms;
 	}
+
+	public Gym listGymByActivity(final int activityId) {
+		final Gym gym = this.gymRepository.listGymByActivity(activityId);
+		return gym;
+	}
 }

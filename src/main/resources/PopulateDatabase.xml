@@ -155,7 +155,7 @@
 		<property name="name" value="gym1" />
 		<property name="address" value="avenida gym1 num 1" />
 		<property name="fee" value="11.11" />
-		<property name="active" value="false" />
+		<property name="active" value="true" />
 		<property name="manager" ref="manager1" />
 		<property name="trainers">
 			<list>
@@ -213,7 +213,7 @@
 		<property name="startTime" value="10:00"/>
 		<property name="endTime" value="12:00"/>
 		<property name="seatsAvailable" value="5"/>
-		<property name="cancel" value="true"/>
+		<property name="cancel" value="false"/>
 		<property name="gym" ref="gym1"/>
 	</bean>
 	

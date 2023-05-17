@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -9,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import domain.Gym;
 import domain.Manager;
 import repositories.ManagerRepository;
+import security.Authority;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -49,6 +53,27 @@ public class ManagerService {
 		Assert.notNull(manager.getUserAccount());
 		Manager result;
 		result = this.managerRepository.save(manager);
+
+		return result;
+	}
+
+	public Manager create() {
+		Manager result;
+		UserAccount userAccount;
+		Authority authority;
+		Collection<Gym> gyms;
+
+		authority = new Authority();
+		userAccount = new UserAccount();
+		gyms = new ArrayList<Gym>();
+
+		authority.setAuthority("MANAGER");
+		userAccount.addAuthority(authority);
+
+		result = new Manager();
+
+		result.setUserAccount(userAccount);
+		result.setGyms(gyms);
 
 		return result;
 	}

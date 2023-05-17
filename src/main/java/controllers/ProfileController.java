@@ -25,11 +25,14 @@ import org.springframework.web.servlet.ModelAndView;
 import domain.Activity;
 import domain.Actor;
 import domain.Gym;
+import domain.Manager;
 import domain.Trainer;
 import domain.Workout;
+import forms.ActorForm;
 import services.ActivityService;
 import services.ActorService;
 import services.GymService;
+import services.ManagerService;
 import services.TrainerService;
 import services.WorkoutService;
 
@@ -50,6 +53,9 @@ public class ProfileController extends AbstractController {
 
 	@Autowired
 	private TrainerService	trainerService;
+
+	@Autowired
+	private ManagerService	managerService;
 
 
 	// MY profile ---------------------------------------------------------------
@@ -155,6 +161,44 @@ public class ProfileController extends AbstractController {
 		trainers = this.trainerService.findAllByIDActivity(activityId);
 		result = new ModelAndView("profile/listTrainerByActivity");
 		result.addObject("trainers", trainers);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/listGymByActivity", method = RequestMethod.GET)
+	public ModelAndView listGymByActivity(@RequestParam final int activityId) {
+		ModelAndView result;
+		Gym gym;
+
+		gym = this.gymService.listGymByActivity(activityId);
+		result = new ModelAndView("profile/listGymByActivity");
+		result.addObject("gym", gym);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/registerManager", method = RequestMethod.GET)
+	public ModelAndView edit() {
+
+		ModelAndView result;
+		result = new ModelAndView("manager/edit");
+
+		result.addObject("managerForm", new ActorForm());
+
+		return result;
+	}
+
+	// Save
+	// ====================================================================
+
+	@RequestMapping(value = "/registerManager", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final ActorForm managerForm, final BindingResult binding) {
+		final ModelAndView result;
+		Manager newManager;
+
+		newManager = this.managerService.create();
+		result = new ModelAndView("redirect:/welcome/index.do");
+		newManager = this.managerService.save(newManager);
 
 		return result;
 	}
