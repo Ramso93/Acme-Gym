@@ -25,58 +25,10 @@
 			<spring:message code = "workout.description" var="descriptionHeader" />
 			<display:column property="description" title="${descriptionHeader}" />
 			
-			
-			<jstl:choose>
-			
-				<jstl:when test="${row.gym.manager == principal}">
-				
-					<display:column>
-						<a href="workout/detailsLogin.do?workoutId=${row.id}">
+			<display:column>
+						<a href="workout/seeWorkout.do?workoutId=${row.id}">
 							<spring:message code="workout.details" />
 						</a>
 					</display:column>
-				
-				</jstl:when>
-				
-				<jstl:otherwise>
-				
-					<display:column>
-						<a href="workout/details.do?workoutId=${row.id}">
-							<spring:message code="workout.details" />
-						</a>
-					</display:column>
-					
-				</jstl:otherwise>
-			
-			</jstl:choose>
-			
-
-			
-			<security:authorize access="hasRole('MANAGER')">
-				<jstl:if test="${row.gym.manager == principal }">
-								
-					<display:column>
-						<a href="workout/edit.do?workoutId=${row.id}">
-							<spring:message code="workout.edit" />
-						</a>
-					</display:column>
-			
-				</jstl:if>
-			</security:authorize>
 						
 </display:table>
-
-<security:authorize access="hasRole('MANAGER')">
-	<jstl:if test="${gym.manager == principal }">
-						
-			
-		<a href="workout/create.do?gymId=${gym.id}">
-			<spring:message code="workout.create" />
-		</a>
-	
-	</jstl:if>
-</security:authorize>
-
-
-	<input type="button" name="cancel" value="<spring:message code="workout.cancel" />"
-onclick="javascript: window.location.replace('/Acme-Gym')" />

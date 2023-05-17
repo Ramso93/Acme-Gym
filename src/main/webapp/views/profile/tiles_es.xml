@@ -37,7 +37,7 @@
 	</definition>
 	
 	<definition name="profile/gym" extends="master.page">	
-		<put-attribute name="title" value="Catalogo de Gimnasios" />
+		<put-attribute name="title" value="Gimnasios" />
 		<put-attribute name="body" value="/views/profile/gym.jsp" />
 	</definition>
 	

@@ -24,9 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 import domain.Activity;
 import domain.Actor;
 import domain.Gym;
+import domain.Workout;
 import services.ActivityService;
 import services.ActorService;
 import services.GymService;
+import services.WorkoutService;
 
 @Controller
 @RequestMapping("/profile")
@@ -40,6 +42,8 @@ public class ProfileController extends AbstractController {
 	private GymService		gymService;
 	@Autowired
 	private ActivityService	activityService;
+	@Autowired
+	private WorkoutService	workoutService;
 
 
 	// MY profile ---------------------------------------------------------------
@@ -116,13 +120,13 @@ public class ProfileController extends AbstractController {
 	@RequestMapping(value = "/listWorkout", method = RequestMethod.GET)
 	public ModelAndView catalogueWorkout() {
 		ModelAndView result;
-		Collection<Activity> activities;
+		Collection<Workout> workouts;
 
-		activities = this.activityService.findActivitiesNotCancel();
+		workouts = this.workoutService.findAll();
 
-		result = new ModelAndView("profile/listActivity");
-		result.addObject("activities", activities);
-		result.addObject("requestURI", "profile/listActivity.do");
+		result = new ModelAndView("profile/listWorkout");
+		result.addObject("workouts", workouts);
+		result.addObject("requestURI", "profile/listWorkout.do");
 
 		return result;
 	}
