@@ -21,9 +21,7 @@
 
 			<spring:message code = "activity.pictures" var = "picturesHeader" />
 			<display:column title = "${picturesHeader}">
-				
 					<img height="48" width="48" src="${picturesHueader}">
-				
 			</display:column>
 
 			<spring:message code = "activity.title" var = "titleHeader" />
@@ -45,62 +43,50 @@
 			<display:column property = "seatsAvailable" title = "${seatsAvailableHeader}" />
 			
 			<display:column>
-					<a href="trainer/listByActivity.do?activityId=${row.id}">
+					<a href="profile/listTrainerByActivity.do?activityId=${row.id}">
 						<spring:message code="activity.listOfTrainers" />
 					</a>
 			</display:column>
 			
-		<jstl:if test="${row.gym.active == false }">
-			<display:column>
-					<a href="gym/listByActivity.do?activityId=${row.id}">
-						<spring:message code="activity.listGym" />
-					</a>
-			</display:column>
-		</jstl:if>	
+			<jstl:if test="${row.gym.active == false }">
+				<display:column>
+						<a href="gym/listGymByActivity.do?activityId=${row.id}">
+							<spring:message code="activity.listGym" />
+						</a>
+				</display:column>
+			</jstl:if>	
 		
-		<security:authorize access="hasRole('MANAGER')">
-			<jstl:if test="${manager != null }">
-			<display:column>
-				<jstl:if test="${row.cancel == false && row.gym.manager eq manager}">
-					<a href="activity/cancel.do?activityId=${row.id}">
-						<spring:message code="activity.cancel2" />
-					</a>
-				</jstl:if>	
-			</display:column>
-			</jstl:if>
-		</security:authorize>
+			<security:authorize access="hasRole('MANAGER')">
+				<jstl:if test="${manager != null }">
+				<display:column>
+					<jstl:if test="${row.cancel == false && row.gym.manager eq manager}">
+						<a href="activity/cancel.do?activityId=${row.id}">
+							<spring:message code="activity.cancel2" />
+						</a>
+					</jstl:if>	
+				</display:column>
+				</jstl:if>
+			</security:authorize>
 		
-		<jstl:if test="${var }">
+			<jstl:if test="${var }">
 				<security:authorize access="hasRole('CUSTOMER')">
-					
 					<display:column>
-	
 						<jstl:choose>
-			
 							<jstl:when test="${row.gym.customers.contains(principal) && fn:length(row.customers) < row.seatsAvailable && !row.customers.contains(principal)}">
 								<a href="activity/joinActivity.do?activityId=${row.id }"><spring:message
 										code="activity.joinActivity" /></a>
-			
 							</jstl:when>
-							
 							<jstl:when test="${row.customers.contains(principal)}">
 								<a href="activity/leaveActivity.do?activityId=${row.id }"><spring:message
 										code="activity.leaveActivity" /></a>
 							</jstl:when>
-							
 							<jstl:otherwise>
 								--
 							</jstl:otherwise>
-	
-			
 						</jstl:choose>
-						
 					</display:column>
-					
 				</security:authorize>		
 			</jstl:if>
-		
-		
 </display:table>
 
 <jstl:if test="${gym.active == false}">

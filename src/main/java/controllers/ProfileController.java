@@ -25,10 +25,12 @@ import org.springframework.web.servlet.ModelAndView;
 import domain.Activity;
 import domain.Actor;
 import domain.Gym;
+import domain.Trainer;
 import domain.Workout;
 import services.ActivityService;
 import services.ActorService;
 import services.GymService;
+import services.TrainerService;
 import services.WorkoutService;
 
 @Controller
@@ -45,6 +47,9 @@ public class ProfileController extends AbstractController {
 	private ActivityService	activityService;
 	@Autowired
 	private WorkoutService	workoutService;
+
+	@Autowired
+	private TrainerService	trainerService;
 
 
 	// MY profile ---------------------------------------------------------------
@@ -138,6 +143,18 @@ public class ProfileController extends AbstractController {
 		System.err.println("\n\ntitle: " + workout.getDescription() + " " + workout.getId() + "\n\n");
 		result = new ModelAndView("profile/Workout");
 		result.addObject("workout", workout);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/listTrainerByActivity", method = RequestMethod.GET)
+	public ModelAndView listTrainerByActivity(@RequestParam final int activityId) {
+		ModelAndView result;
+		Collection<Trainer> trainers;
+
+		trainers = this.trainerService.findAllByIDActivity(activityId);
+		result = new ModelAndView("profile/listTrainerByActivity");
+		result.addObject("trainers", trainers);
 
 		return result;
 	}
