@@ -51,8 +51,8 @@ public class AdministratorController extends AbstractController {
 		ModelAndView result;
 		final Collection<Manager> managers;
 		managers = this.managerService.findAll();
-		for (final Manager manager : managers)
-			System.out.println("manager: " + manager.getUserAccount().getEnabled());
+		//for (final Manager manager : managers)
+		//System.out.println("manager: " + manager.getUserAccount().getEnabled());
 		result = new ModelAndView("administrator/listManagers");
 		result.addObject("requestURI", "administrator/listManagers.do");
 		result.addObject("managers", managers);

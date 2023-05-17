@@ -61,6 +61,7 @@
 		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/myprofile.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/profile/myprofile/edit.do" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/profile/gym.do" access="permitAll"/>
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

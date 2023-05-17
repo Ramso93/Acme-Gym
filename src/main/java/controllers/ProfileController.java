@@ -10,6 +10,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Actor;
+import domain.Gym;
 import services.ActorService;
+import services.GymService;
 
 @Controller
 @RequestMapping("/profile")
@@ -29,7 +33,9 @@ public class ProfileController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private ActorService actorService;
+	private ActorService	actorService;
+	@Autowired
+	private GymService		gymService;
 	//@Autowired
 	//private LoginService	loginService;
 
@@ -70,7 +76,8 @@ public class ProfileController extends AbstractController {
 				result = this.createEditModelAndView(myprofile, "actor.save.error");
 			else {
 				myprofile2 = this.actorService.comprobarPA2(myprofile, binding);
-				result = new ModelAndView("redirect:/profile/myprofile.do");
+				//result = new ModelAndView("redirect:/profile/myprofile.do");
+				result = new ModelAndView("redirect:/profile/myprofile");
 				myprofile2 = this.actorService.save(myprofile);
 			}
 		} catch (final Throwable exc) {
@@ -80,6 +87,15 @@ public class ProfileController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/gym", method = RequestMethod.GET)
+	public ModelAndView catalogueGyms() {
+		ModelAndView result;
+		final Collection<Gym> gyms = this.gymService.findAll();
+		result = new ModelAndView("profile/gym");
+		result.addObject("requestURI", "profile/gym.do");
+		result.addObject("gyms", gyms);
+		return result;
+	}
 	/*
 	 * private ModelAndView createEditModelAndView(final Actor myprofile) {
 	 * final ModelAndView result = this.createEditModelAndView(myprofile, null);

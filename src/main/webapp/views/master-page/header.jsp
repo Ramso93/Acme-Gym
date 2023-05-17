@@ -47,7 +47,7 @@
 			</a>
 			<ul>
 				<li class="arrow"></li>
-				<li><a ><spring:message code="master.page.catalogue.gym" /></a></li>
+				<li><a href="profile/gym.do"><spring:message code="master.page.catalogue.gym" /></a></li>
 				<li><a ><spring:message code="master.page.catalogue.activity" /></a></li>
 				<li><a ><spring:message code="master.page.catalogue.workout" /></a></li>
 			</ul>
