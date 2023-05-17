@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Activity;
@@ -57,8 +58,6 @@ public class ProfileController extends AbstractController {
 		result = new ModelAndView("profile/myprofile");
 		result.addObject("perfil", perfil);
 		result.addObject("actor", actor);
-		System.out.println("name: " + perfil.getName());
-		System.out.println("nameactor: " + actor.getName());
 		return result;
 	}
 
@@ -130,7 +129,18 @@ public class ProfileController extends AbstractController {
 
 		return result;
 	}
+	@RequestMapping(value = "/Workout", method = RequestMethod.GET)
+	public ModelAndView Workout(@RequestParam final int workoutId) {
+		ModelAndView result;
+		Workout workout;
 
+		workout = this.workoutService.findById(workoutId);
+		System.err.println("\n\ntitle: " + workout.getDescription() + " " + workout.getId() + "\n\n");
+		result = new ModelAndView("profile/Workout");
+		result.addObject("workout", workout);
+
+		return result;
+	}
 	/*
 	 * private ModelAndView createEditModelAndView(final Actor myprofile) {
 	 * final ModelAndView result = this.createEditModelAndView(myprofile, null);
@@ -145,29 +155,6 @@ public class ProfileController extends AbstractController {
 
 		return result;
 	}
-	// Profile foreign
-	/**
-	 * @RequestMapping(value = "/myprofile", method = RequestMethod.GET)
-	 *                       public ModelAndView myprofile(@RequestParam(required = false) final Integer actorId) {
-	 *                       ModelAndView result;
-	 *                       Actor perfil;
-	 *                       if (actorId != null) {
-	 *                       Actor actor = this.actorService.findOne(actorId);
-	 *                       if (actor == null)
-	 *                       result = new ModelAndView("redirect:/panic/misc.do");
-	 *                       else {
-	 *                       perfil = this.actorService.findByPrincipal();
-	 *                       result = new ModelAndView("profile/myprofile");
-	 *                       result.addObject("perfil", perfil);
-	 *                       result.addObject("actor", actor);
-	 *                       }
-	 *                       } else {
-	 *                       perfil = this.actorService.findByPrincipal();
-	 *                       result = new ModelAndView("redirect:/profile/myprofile.do?actoId=" + perfil.getId());
-	 *                       }
-	 *                       return result;
-	 *                       }
-	 */
 	// Action-1 ---------------------------------------------------------------
 
 	@RequestMapping("/action-1")

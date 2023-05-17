@@ -51,4 +51,9 @@
 		<put-attribute name="body" value="/views/profile/listWorkout.jsp" />
 	</definition>
 	
+	<definition name="profile/Workout" extends="master.page">	
+		<put-attribute name="title" value="Details" />
+		<put-attribute name="body" value="/views/profile/Workout.jsp" />
+	</definition>
+	
 </tiles-definitions>

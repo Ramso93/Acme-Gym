@@ -1,5 +1,5 @@
 <%--
- * listWorkout.jsp
+ * myprofile.jsp
  *
  * Copyright (C) 2018 Universidad de Sevilla
  * 
@@ -15,20 +15,16 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<display:table name = "workouts" id = "row" requestURI = "${requestURI}" pagesize = "5" class = "displaytag" >
-
-			<spring:message code = "workout.title" var = "titleHeader" />
-			<display:column property = "title" title = "${titleHeader}" />
-		
-			<spring:message code = "workout.description" var="descriptionHeader" />
-			<display:column property="description" title="${descriptionHeader}" />
-			
-			<display:column>
-						<a href="profile/Workout.do?workoutId=${row.id}">
-							<spring:message code="workout.details" />
-						</a>
-					</display:column>
-						
-</display:table>
+<form:form modelAttribute="workout">
+	<fieldset>
+	<spring:message code="workout.title"/>:<br>
+	<form:input type="text" path="title" value="${workout.title}" disabled="true"/><br>
+	<spring:message code="workout.description"/>:<br>
+	<form:input type="text" path="description" value="${workout.description}" disabled="true"/><br>
+				
+	</fieldset>
+</form:form>
+<jstl:if test="${actor.id == perfil.id}">
+	<a href="profile/myprofile/editWorkout.do?workoutId=${workout.id}"><spring:message code="workout.edit"/></a>
+</jstl:if>

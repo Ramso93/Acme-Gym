@@ -27,4 +27,8 @@ public class WorkoutService {
 
 		return workouts;
 	}
+	public Workout findById(final int workoutid) {
+		final Workout workout = this.workoutRepository.findOne(workoutid);
+		return workout;
+	}
 }
