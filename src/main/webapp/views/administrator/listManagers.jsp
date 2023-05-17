@@ -18,6 +18,7 @@
 
 <display:table pagesize="7" class="displaytag" keepStatus="true"
 	name="managers" requestURI="${requestURI}" id="row">
+	
 	<!-- Attributes -->
 	
 	<spring:message code="actor.name" var="nameHeader" />
@@ -41,7 +42,6 @@
 	<spring:message code="actor.country" var="countryHeader" />
 	<display:column property="country" title="${countryHeader}" sortable="false" />
 	
-	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column>
 			<a href="administrator/ban.do?managerId=${row.id}">
@@ -56,8 +56,5 @@
 			</a>
 		</display:column>
 	</security:authorize>
-	
-	
-	
-	
+
 </display:table>

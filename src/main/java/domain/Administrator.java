@@ -16,7 +16,6 @@ public class Administrator extends Actor {
 	 * super();
 	 * }
 	 */
-
 	// Attributes -------------------------------------------------------------
 
 	// Relationships ----------------------------------------------------------

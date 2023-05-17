@@ -22,8 +22,8 @@ public class Manager extends Actor {
 	//atributos
 	/*
 	 * private boolean baneado;
-	 * 
-	 * 
+	 *
+	 *
 	 * public boolean isBaneado() {
 	 * return this.baneado;
 	 * }

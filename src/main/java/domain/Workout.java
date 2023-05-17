@@ -43,33 +43,36 @@ public class Workout extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
+
+
 	//relacion
 	private Collection<Step>		steps;
 	private Gym						gym;
 	private Collection<Annotation>	annotations;
-	
+
+
 	@OneToMany(mappedBy = "workout")
 	public Collection<Step> getSteps() {
-		return steps;
+		return this.steps;
 	}
-	public void setSteps(Collection<Step> steps) {
+	public void setSteps(final Collection<Step> steps) {
 		this.steps = steps;
 	}
 
 	@Valid
 	@ManyToOne(optional = false)
 	public Gym getGym() {
-		return gym;
+		return this.gym;
 	}
-	public void setGym(Gym gym) {
+	public void setGym(final Gym gym) {
 		this.gym = gym;
 	}
 
 	@OneToMany(mappedBy = "workout")
 	public Collection<Annotation> getAnnotations() {
-		return annotations;
+		return this.annotations;
 	}
-	public void setAnnotations(Collection<Annotation> annotations) {
+	public void setAnnotations(final Collection<Annotation> annotations) {
 		this.annotations = annotations;
 	}
 }

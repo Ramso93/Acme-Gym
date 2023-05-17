@@ -48,8 +48,8 @@
 			<ul>
 				<li class="arrow"></li>
 				<li><a href="profile/gym.do"><spring:message code="master.page.catalogue.gym" /></a></li>
-				<li><a ><spring:message code="master.page.catalogue.activity" /></a></li>
-				<li><a ><spring:message code="master.page.catalogue.workout" /></a></li>
+				<li><a href="profile/listActivity.do"><spring:message code="master.page.catalogue.activity" /></a></li>
+				<li><a href="profile/listWorkout.do"><spring:message code="master.page.catalogue.workout" /></a></li>
 			</ul>
 		</li>
 		
@@ -109,4 +109,3 @@
 <div>
 	<a href="?language=en">en</a> | <a href="?language=es">es</a>
 </div>
-

@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.Activity;
 import domain.Actor;
 import domain.Gym;
+import services.ActivityService;
 import services.ActorService;
 import services.GymService;
 
@@ -36,8 +38,8 @@ public class ProfileController extends AbstractController {
 	private ActorService	actorService;
 	@Autowired
 	private GymService		gymService;
-	//@Autowired
-	//private LoginService	loginService;
+	@Autowired
+	private ActivityService	activityService;
 
 
 	// MY profile ---------------------------------------------------------------
@@ -96,6 +98,35 @@ public class ProfileController extends AbstractController {
 		result.addObject("gyms", gyms);
 		return result;
 	}
+
+	@RequestMapping(value = "/listActivity", method = RequestMethod.GET)
+	public ModelAndView cataloguetActivity() {
+		ModelAndView result;
+		Collection<Activity> activities;
+
+		activities = this.activityService.findActivitiesNotCancel();
+
+		result = new ModelAndView("profile/listActivity");
+		result.addObject("activities", activities);
+		result.addObject("requestURI", "profile/listActivity.do");
+
+		return result;
+	}
+
+	@RequestMapping(value = "/listWorkout", method = RequestMethod.GET)
+	public ModelAndView catalogueWorkout() {
+		ModelAndView result;
+		Collection<Activity> activities;
+
+		activities = this.activityService.findActivitiesNotCancel();
+
+		result = new ModelAndView("profile/listActivity");
+		result.addObject("activities", activities);
+		result.addObject("requestURI", "profile/listActivity.do");
+
+		return result;
+	}
+
 	/*
 	 * private ModelAndView createEditModelAndView(final Actor myprofile) {
 	 * final ModelAndView result = this.createEditModelAndView(myprofile, null);

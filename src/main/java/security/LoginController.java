@@ -1,8 +1,8 @@
 /*
  * LoginController.java
- * 
+ *
  * Copyright (C) 2018 Universidad de Sevilla
- * 
+ *
  * The use of this project is hereby constrained to the conditions of the
  * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
@@ -29,7 +29,7 @@ public class LoginController extends AbstractController {
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	LoginService	service;
+	LoginService service;
 
 
 	// Constructors -----------------------------------------------------------
@@ -44,7 +44,7 @@ public class LoginController extends AbstractController {
 	public ModelAndView login(@Valid final Credentials credentials, final BindingResult bindingResult, @RequestParam(required = false) final boolean showError) {
 		Assert.notNull(credentials);
 		Assert.notNull(bindingResult);
-
+		System.out.println(credentials.getPassword() + " " + credentials.getUsername());
 		ModelAndView result;
 
 		result = new ModelAndView("security/login");
